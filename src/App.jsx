@@ -1,4 +1,4 @@
-const version = "0.0.1";
+import log from 'loglevel';
 
 import logo from './assets/logo.svg';
 import styles from './App.module.css';
@@ -16,6 +16,8 @@ import {
 
 import { fetcher, WebSocketService } from './helpers';
 
+import { version } from './config';
+
 import Login from './Login';
 
 import Signup from './Signup';
@@ -32,8 +34,7 @@ const App = () => {
       navigator.serviceWorker
           .register('./service-worker.js', {scope: './'})
           .then((reg) => {
-              // registration worked
-              console.log('Registration succeeded. Scope is ' + reg.scope);
+              log.info(`Registration succeeded. Scope is ${reg.scope}`);
           });
   }
 

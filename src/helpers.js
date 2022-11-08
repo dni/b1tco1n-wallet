@@ -18,10 +18,14 @@ import {
     setDecodedInvoice,
 } from "./Pay"
 
+import log from 'loglevel';
 import {
     ws_url,
     api_url,
+    debug,
 } from "./config"
+
+log.setLevel(debug ? 5 : 3);
 
 import {
     setNewInvoice,
@@ -80,7 +84,7 @@ export const fetcher = (url, cb, json = true, params = null) => {
     })
     .then(cb)
     .catch((error) => {
-        console.log(error);
+        log.error(error);
         setErrorMessage(error.toString());
     });
 };
@@ -188,7 +192,7 @@ export class WebSocketService {
     }
     onmessage(event) {
         let data = JSON.parse(event.data);
-        console.log(data);
+        log.debug(data);
         if (data.type == WebSocketAction.user) {
            setLogin(true)
            setUser(data.data);
@@ -230,7 +234,7 @@ export class WebSocketService {
         }
         if (data.type == WebSocketAction.error) {
             setErrorMessage(data.message);
-            console.log(data.type, data.message);
+            log.error(data.type, data.message);
         }
         if (data.type == WebSocketAction.lnurl) {
             setDecodedLnurl(data.data);
@@ -239,7 +243,7 @@ export class WebSocketService {
            this.send({"type": WebSocketAction.pong});
         }
         if (data && data.type == WebSocketAction.pong) {
-           console.log("received pong!!!");
+           log.debug("received pong!!!");
         }
     }
 };
