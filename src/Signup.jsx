@@ -42,7 +42,6 @@ function Signup() {
         <input type="text" name="username" placeholder="username..." value={username()} onChange={(e) => setUsername(e.currentTarget.value)} />
         <input type="password" name="password" placeholder="password..." value={password()} onChange={(e) => setPassword(e.currentTarget.value)} />
         <input type="password" name="password-repeat" placeholder="password repeat..." value={password_repeat()} onChange={(e) => setPasswordRepeat(e.currentTarget.value)} />
-        <span className="error">{error_message()}</span>
         <input type="submit" value="signup" />
         &nbsp;or&nbsp;<span class="btn" onClick={show_login_form}>login</span>
       </form>

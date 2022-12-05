@@ -9,6 +9,7 @@ import {
     setErrorMessage,
     setSuccessMessage,
     user,
+    error_message,
     setInvoice,
 } from "./signals"
 
@@ -89,6 +90,19 @@ export const fetcher = (url, cb, json = true, params = null) => {
     });
 };
 
+export const is_online = (cb) => {
+    fetch(api_url)
+        .then(async response => {
+            const data = await response.json();
+            const is_on = data.status === "OK"
+            cb(is_on);
+        })
+        .catch(async error => {
+            cb(false);
+        });
+};
+
+
 export const notify = (title, body, icon) => {
   if (!icon) icon = '/assets/favicon.ico';
   if (!("Notification" in window)) {
@@ -134,7 +148,6 @@ export const getCookie = (name) => {
 export const deleteCookie = (name) => {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 };
-
 
 export const clipboard_write = (text) => {
     if('clipboard' in navigator) {

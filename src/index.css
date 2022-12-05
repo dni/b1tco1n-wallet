@@ -382,10 +382,18 @@ canvas {
 form.error input:not([type=submit]) {
     border-color: red;
 }
+
 span.error {
-    display: block;
-    margin-bottom: 5px;
-    color: red;
+  display: block;
+  margin-bottom: 5px;
+  background: #ff00009c;
+  color: white;
+  padding: 12px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  position: absolute;
+  top: 0;
 }
 
 #pay.error span.error {

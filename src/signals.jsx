@@ -1,5 +1,6 @@
 import { createSignal } from "solid-js";
 
+export const [online, setOnline] = createSignal(false);
 export const [login, setLogin] = createSignal(false);
 export const [user, setUser] = createSignal({});
 export const [username, setUsername] = createSignal("");
@@ -17,13 +18,12 @@ export const [api_key, setApiKey] = createSignal("");
 export const [tpos, setTpos] = createSignal("");
 export const [lnurlp, setLnurlp] = createSignal("");
 export const [lnurlw, setLnurlw] = createSignal("");
+export const [lnauth, setLnauth] = createSignal("");
 export const [payments, setPayments] = createSignal([]);
 export const [invoice, setInvoice] = createSignal("");
 
 export const [showlogin, setShowlogin] = createSignal(false);
 export const [showsignup, setShowsignup] = createSignal(false);
 export const [showsettings, setShowsettings] = createSignal(false);
-
-export const [services, setServices] = createSignal([]);
 
 export const [camera, setCamera] = createSignal(false);
